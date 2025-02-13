@@ -40,7 +40,7 @@ def check_letter():
     vowels = ('a', 'e', 'i', 'o', 'u')
     consonants = ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z')
     
-    x = input('Enter a letter to determine if it is a consonant or vowel:')
+    x = input('Enter a letter to determine if it is a consonant or vowel:\n')
     if x.lower() in vowels:
         print(f"The letter {x} is a vowel")
     elif x.lower() in consonants:
@@ -68,7 +68,7 @@ def check_letter():
 
 def check_voting_eligibility():
     voting_age = 18
-    age = input('Please enter your age:')
+    age = input('Please enter your age:\n')
     
     try:
         converted_age = int(age)
@@ -102,7 +102,7 @@ def check_voting_eligibility():
 # - Apply conditional logic to perform the correct age calculation based on the dog's age.
 
 def calculate_dog_years():
-    user_input = input('Input your dogs age.')
+    user_input = input('Input your dogs age:\n')
     
     try: 
         human_years = int(user_input)
@@ -117,4 +117,44 @@ def calculate_dog_years():
     except ValueError:
         print("That is not a number!")
         
-calculate_dog_years()
+# calculate_dog_years()
+
+# Exercise 4: Weather Advice
+#
+# Write a Python script named `weather_advice` that provides clothing advice based on weather conditions.
+#
+# Requirements:
+# - The script should prompt the user to enter if it is cold (yes/no).
+# - Then, ask if it is raining (yes/no).
+# - Use logical operators to determine clothing advice:
+#   - If it is cold AND raining, print "Wear a waterproof coat."
+#   - If it is cold BUT NOT raining, print "Wear a warm coat."
+#   - If it is NOT cold but raining, print "Carry an umbrella."
+#   - If it is NOT cold AND NOT raining, print "Wear light clothing."
+#
+# Hints:
+# - Use logical operators (`AND`, `OR`, `NOT`) in your if statements to handle multiple conditions.
+
+def weather_advice():
+    temperature = input('Is it cold? (Y/N):\n')
+    
+    if temperature.upper() not in ('Y', 'N'):
+        print('That is not a valid input. Try again')
+        return
+    
+    precipitation = input('Is it raining? (Y/N):\n')
+    
+    if precipitation.upper() not in ('Y', 'N'):
+        print('That is not a valid input. Try again')
+        return
+    
+    if precipitation.upper() == 'Y' and temperature.upper() == 'Y':
+        print('Wear a waterproof coat.')
+    elif precipitation.upper() == 'Y' and temperature.upper() == 'N':
+        print('Carry an umbrella.')
+    elif precipitation.upper() == 'N' and temperature.upper() == 'Y':
+        print('Wear a warm coat.')
+    else:
+        print('Wear light clothing.')
+    
+weather_advice()
