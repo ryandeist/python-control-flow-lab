@@ -136,23 +136,23 @@ calculate_dog_years()
 # - Use logical operators (`AND`, `OR`, `NOT`) in your if statements to handle multiple conditions.
 
 def weather_advice():
-    temperature = input('Is it cold? (Y/N):\n')
+    temperature = input('Is it cold? (Y/N):\n').upper()
     
-    if temperature.upper() not in ('Y', 'N'):
+    if temperature not in ('Y', 'N'):
         print('That is not a valid input. Try again')
         return
     
-    precipitation = input('Is it raining? (Y/N):\n')
+    precipitation = input('Is it raining? (Y/N):\n').upper()
     
-    if precipitation.upper() not in ('Y', 'N'):
+    if precipitation not in ('Y', 'N'):
         print('That is not a valid input. Try again')
         return
     
-    if precipitation.upper() == 'Y' and temperature.upper() == 'Y':
+    if precipitation == 'Y' and temperature == 'Y':
         print('Wear a waterproof coat.')
-    elif precipitation.upper() == 'Y' and temperature.upper() == 'N':
+    elif precipitation == 'Y' and temperature == 'N':
         print('Carry an umbrella.')
-    elif precipitation.upper() == 'N' and temperature.upper() == 'Y':
+    elif precipitation == 'N' and temperature == 'Y':
         print('Wear a warm coat.')
     else:
         print('Wear light clothing.')
