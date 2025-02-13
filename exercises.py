@@ -157,4 +157,57 @@ def weather_advice():
     else:
         print('Wear light clothing.')
     
-weather_advice()
+# weather_advice()
+
+# Exercise 5: What's the Season?
+#
+# Write a Python function named `determine_season` that figures out the season based on the entered date.
+#
+# Requirements:
+# - The function should first prompt the user to enter the month (as three characters): "Enter the month of the year (Jan - Dec):"
+# - Then, the function should prompt the user to enter the day of the month: "Enter the day of the month:"
+# - Determine the current season based on the date:
+#      - Dec 21 - Mar 19: Winter
+#      - Mar 20 - Jun 20: Spring
+#      - Jun 21 - Sep 21: Summer
+#      - Sep 22 - Dec 20: Fall
+# - Print the season for the entered date in the format: "<Mmm> <dd> is in <season>."
+#
+# Hints:
+# - Use 'in' to check if a string is in a list or tuple.
+# - Adjust the season based on the day of the month when needed.
+# - Ensure to validate input formats and handle unexpected inputs gracefully.
+
+def determine_season():
+    accepted_months = ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC')
+    
+    month_input=input('Enter the month of the year (Jan - Dec):\n')
+    
+    if month_input.upper() not in accepted_months:
+        print('Invalid Month Entered. Try Again.')
+        return
+        
+    day_input=input('Enter the day of the month:\n')
+    
+    try: 
+        day = int(day_input)
+        if day < 0 or day > 31:
+            print('That is an invalid date. Try again.')
+        elif month_input.upper() == 'FEB' and day > 29:
+            print('That is an invalid date. Try again.')
+        elif month_input.upper() in ('APR', 'JUN', 'SEP', 'NOV') and day > 30:
+            print('That is an invalid date. Try again.')
+    except ValueError:
+        print("That is not a number!")
+        
+    if (month_input.upper() in ('JAN', 'FEB')) or (month_input.upper() == 'DEC' and int(day_input) >= 21) or (month_input.upper() == 'MAR' and int(day_input) <= 19):
+        print(f'{month_input.upper()} {day_input} is in Winter')
+    elif (month_input.upper() in ('APR', 'MAY')) or (month_input.upper() == 'MAR' and int(day_input) >= 20) or (month_input.upper() == 'JUN' and int(day_input) <= 20):
+        print(f'{month_input.upper()} {day_input} is in Spring')
+    elif (month_input.upper() in ('JUL', 'AUG')) or (month_input.upper() == 'JUN' and int(day_input) >= 21) or (month_input.upper() == 'SEP' and int(day_input) <= 21):
+        print(f'{month_input.upper()} {day_input} is in Summer')
+    else:
+        print(f'{month_input.upper()} {day_input} is in Fall')
+    
+determine_season()
+
