@@ -48,7 +48,7 @@ def check_letter():
     else:
         print(f"{x} is an invalid input")
 
-# check_letter()
+check_letter()
 
 # Exercise 2: Old enough to vote?
 #
@@ -81,7 +81,7 @@ def check_voting_eligibility():
     except ValueError:
         print("That is not a number!")
         
-# check_voting_eligibility()
+check_voting_eligibility()
 
 # Exercise 3: Calculate Dog Years
 #
@@ -117,7 +117,7 @@ def calculate_dog_years():
     except ValueError:
         print("That is not a number!")
         
-# calculate_dog_years()
+calculate_dog_years()
 
 # Exercise 4: Weather Advice
 #
@@ -157,7 +157,7 @@ def weather_advice():
     else:
         print('Wear light clothing.')
     
-# weather_advice()
+weather_advice()
 
 # Exercise 5: What's the Season?
 #
@@ -179,35 +179,63 @@ def weather_advice():
 # - Ensure to validate input formats and handle unexpected inputs gracefully.
 
 def determine_season():
-    accepted_months = ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC')
+    accepted_months = ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC')
     
-    month_input=input('Enter the month of the year (Jan - Dec):\n')
+    month_input=input('Enter the month of the year (Jan - Dec):\n').upper()
     
-    if month_input.upper() not in accepted_months:
+    if month_input not in accepted_months:
         print('Invalid Month Entered. Try Again.')
         return
-        
+    
     day_input=input('Enter the day of the month:\n')
     
     try: 
         day = int(day_input)
-        if day < 0 or day > 31:
+        if (day < 0) or (day > 31):
             print('That is an invalid date. Try again.')
-        elif month_input.upper() == 'FEB' and day > 29:
+            return
+        elif month_input == 'FEB' and day > 29:
             print('That is an invalid date. Try again.')
-        elif month_input.upper() in ('APR', 'JUN', 'SEP', 'NOV') and day > 30:
+            return
+        elif month_input in ('APR', 'JUN', 'SEP', 'NOV') and day > 30:
             print('That is an invalid date. Try again.')
+            return
     except ValueError:
-        print("That is not a number!")
+        print("That is not a number! Try again.")
+        return
         
-    if (month_input.upper() in ('JAN', 'FEB')) or (month_input.upper() == 'DEC' and int(day_input) >= 21) or (month_input.upper() == 'MAR' and int(day_input) <= 19):
-        print(f'{month_input.upper()} {day_input} is in Winter')
-    elif (month_input.upper() in ('APR', 'MAY')) or (month_input.upper() == 'MAR' and int(day_input) >= 20) or (month_input.upper() == 'JUN' and int(day_input) <= 20):
-        print(f'{month_input.upper()} {day_input} is in Spring')
-    elif (month_input.upper() in ('JUL', 'AUG')) or (month_input.upper() == 'JUN' and int(day_input) >= 21) or (month_input.upper() == 'SEP' and int(day_input) <= 21):
-        print(f'{month_input.upper()} {day_input} is in Summer')
+    if (month_input in ('JAN', 'FEB')) or (month_input == 'DEC' and int(day_input) >= 21) or (month_input == 'MAR' and int(day_input) <= 19):
+        print(f'{month_input} {day_input} is in Winter')
+    elif (month_input in ('APR', 'MAY')) or (month_input == 'MAR' and int(day_input) >= 20) or (month_input == 'JUN' and int(day_input) <= 20):
+        print(f'{month_input} {day_input} is in Spring')
+    elif (month_input in ('JUL', 'AUG')) or (month_input == 'JUN' and int(day_input) >= 21) or (month_input == 'SEP' and int(day_input) <= 21):
+        print(f'{month_input} {day_input} is in Summer')
     else:
-        print(f'{month_input.upper()} {day_input} is in Fall')
+        print(f'{month_input} {day_input} is in Fall')
     
 determine_season()
+
+# Exercise 6: Number Guessing Game
+#
+# Write a Python function named `guess_number` that allows a user to guess a predetermined number within a range.
+#
+# Requirements:
+# - Set a fixed number as the target for guessing (e.g., 42).
+# - Prompt the user to guess a number within a range (e.g., 1 to 100).
+# - Allow the user to guess up to five times.
+# - After each guess, use conditional statements with AND, OR, and NOT to give the user hints like:
+#   - "Guess is too low" or "Guess is too high."
+#   - "Last chance!" when they are on their fifth guess.
+# - Print "Congratulations, you guessed correctly!" if they guess the number.
+# - Print "Sorry, you failed to guess the number in five attempts." if they do not succeed.
+#
+# Hints:
+# - Use a for loop with a range to limit guesses to five.
+# - Use logical AND, OR, and NOT to check conditions and provide appropriate feedback.
+
+# def guess_number():
+#     # Your control flow logic goes here
+
+# # Call the function
+# guess_number()
 
