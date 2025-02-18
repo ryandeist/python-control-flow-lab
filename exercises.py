@@ -191,7 +191,7 @@ def determine_season():
     
     try: 
         day = int(day_input)
-        if (day < 0) or (day > 31):
+        if (day < 1) or (day > 31):
             print('That is an invalid date. Try again.')
             return
         elif month_input == 'FEB' and day > 29:
